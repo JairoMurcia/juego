@@ -10,7 +10,7 @@ function Board(width, height) {
     this.stripsHeight = 15;
     this.stripsDistance = 40;
     this.topEdgeOfRoad = 15;
-    this.laneSeparator = 30;
+    this.laneSeparator = 35;
 
     this.roadWidth = (this.laneWidth * 6) + (this.stripsWidth * 4) + this.laneSeparator;
     this.grassWidth = (this.width - this.roadWidth) / 2;
@@ -49,7 +49,7 @@ function Board(width, height) {
 
 
     this.colors = {
-        grass: '#0B610B',
+        grass: '#FFBE33',
         road: '#333333',
         divider: '#f7f7f7'
     };

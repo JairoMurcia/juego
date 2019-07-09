@@ -113,9 +113,12 @@ function RoadFighter(canvas, width, height, inputBuffer) {
 
             var newObject;
             var rand = Math.floor((Math.random() * 4) + 1);
-
-                 newObject = new BoardObject('tree', rand);
-
+			var typo=Math.random()*1;
+			if(typo==1){
+            newObject = new BoardObject('rock', rand);
+			}else{
+				newObject=new BoardObject('rock', rand);
+			}
             if(this.boardObjectSide){
                 rand = Math.floor((Math.random() * this.board.grassWidth- 50) + 1);
                 this.boardObjectSide = false;
@@ -232,7 +235,7 @@ function RoadFighter(canvas, width, height, inputBuffer) {
     this.drawStats = function(){
 
         var scoreCounter = document.getElementById('score');
-        scoreCounter.innerText = this.player.score;
+        scoreCounter.innerText = parseInt(this.player.score);
 
     };
 
@@ -244,7 +247,7 @@ function RoadFighter(canvas, width, height, inputBuffer) {
         this.canvas.fillStyle = "red";
         this.canvas.textAlign = "center";
         this.canvas.fillText("Game Over", this.board.width/2, this.board.height/2);
-        this.canvas.fillText("Score: "+this.player.score, this.board.width/2, this.board.height/2+40);
+        this.canvas.fillText("Score: "+parseInt(this.player.score), this.board.width/2, this.board.height/2+40);
     };
 
     this.carSteering = function () {
@@ -284,10 +287,11 @@ function RoadFighter(canvas, width, height, inputBuffer) {
             this.shiftFrameFactor = this.minimumShiftFrameFactor;
         }
     };
+	
     this.collisionsDetection = function () {
-
-        this.player.score +=
-            parseInt(((this.player.distance * 0.0003)+this.shiftFrameFactor * 0.0002)*this.scoreMultipler);
+		
+        this.player.score +=0.1;
+            //parseInt(((this.player.distance * 0.0003)+this.shiftFrameFactor * 0.0002)*this.scoreMultipler);
 
         for (var i = 1; i < this.cars.length; i++) {
             var car = this.cars[i];
